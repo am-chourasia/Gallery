@@ -1,0 +1,97 @@
+:root{
+--primary: #efb6b2;
+--secondary: #474747;
+--error: #ff4a4a;
+}
+*{
+margin: 0;
+padding: 0;
+}
+
+/* base styles & title */
+body{
+color: var(--secondary);
+}
+.admin{
+max-width: 960px;
+margin: 0 auto;
+}
+
+.header {
+    width: 100% !important;
+    background: #000000;
+    height: auto;
+    text-align: center;
+    box-sizing: border-box;
+    z-index: 100;   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    span{
+        color: rgb(255, 255, 255);
+        /* opacity: 50%; */
+        font-size: x-large;
+    
+        :nth-child(1){
+            display: inline-block;
+            font-family: 'roboto', sans-serif;
+            font-weight: bold;
+            margin: 10px 5px;
+        }
+        :nth-child(2){
+        display: inline-block;
+        font-family: 'roboto', sans-serif;
+        font-weight: lighter;
+        margin: 10px 5px;
+        } 
+    }
+}
+
+/* upload form styles */
+form{
+    margin: 30px auto 0px;
+    text-align: center;
+    border: 1px solid black;
+ 
+    label{
+        display: block;
+        height: 30px;
+        width: 30px;
+        border: 1px solid black;
+        border-radius: 50%;
+        margin: 10px auto;
+        line-height: 30px;
+        color: black;
+        font-weight: bold;
+        font-size: 24px;
+        input{
+            height: 0;
+            width: 0;
+            opacity: 0;
+        }
+        &:hover{
+            background: black;
+            color: rgb(255, 255, 255);
+        }
+    }
+}
+.output{ 
+    text-align: center;
+    border: 1px solid black;
+    padding: 10px;
+    height: 20px;
+    font-size: 0.8rem;
+}
+
+/* progress bar styles */
+.progress-bar{
+    height: 5px;
+    background: gray;
+    margin-top: 20px;
+}
+  
+
+/* image grid styles */
+
+
+/* modal styles */
