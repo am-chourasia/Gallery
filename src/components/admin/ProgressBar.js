@@ -14,4 +14,4 @@ const ProgressBar = ({ file, setFile }) => {
   );
 } 
 
-export default ProgressBar; 
+export default ProgressBar;

@@ -9,7 +9,7 @@
   padding: 0;
 }
 
-/* base styles & title */
+/* base styles */
 body {
   color: var(--secondary);
 }
@@ -19,6 +19,7 @@ body {
   margin: 0 auto;
 }
 
+/* Title styles */
 .header {
   width: 100% !important;
   background: #000000;
@@ -111,7 +112,7 @@ form label:hover {
   display: grid;
   -ms-grid-columns: 1fr 1fr 1fr;
       grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 40px;
+  grid-gap: 3%;
 }
 
 .image-grid .image-wrap {
@@ -121,6 +122,11 @@ form label:hover {
   /* padding controls height, will always be perfectly square regardless of width */
   position: relative;
   opacity: 0.8;
+}
+
+.image-grid .image-wrap:hover {
+  cursor: -webkit-zoom-in;
+  cursor: zoom-in;
 }
 
 .image-grid .image-wrap img {
@@ -133,4 +139,34 @@ form label:hover {
 }
 
 /* modal styles */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.644);
+  -webkit-backdrop-filter: blur(3px);
+          backdrop-filter: blur(3px);
+}
+
+.backdrop:hover {
+  cursor: -webkit-zoom-out;
+  cursor: zoom-out;
+}
+
+.backdrop img {
+  display: block;
+  max-width: 60%;
+  max-height: 80%;
+  margin: 60px auto;
+  -webkit-box-shadow: 3px 5px 7px rgba(0, 0, 0, 0.5);
+          box-shadow: 3px 5px 7px rgba(0, 0, 0, 0.5);
+  border: 3px solid white;
+}
+
+.backdrop img:hover {
+  cursor: -webkit-zoom-in;
+  cursor: zoom-in;
+}
 /*# sourceMappingURL=index.css.map */
