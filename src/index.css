@@ -162,7 +162,7 @@ form label:hover {
   margin: 60px auto;
   -webkit-box-shadow: 3px 5px 7px rgba(0, 0, 0, 0.5);
           box-shadow: 3px 5px 7px rgba(0, 0, 0, 0.5);
-  border: 3px solid white;
+  border: 1px solid white;
 }
 
 .backdrop img:hover {

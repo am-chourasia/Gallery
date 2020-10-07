@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {motion} from 'framer-motion';
 
 const ModalImage = ({selectedImage, setSelectedImage}) => {
     const [fullscreen, setFullscreen] = useState(false)
@@ -30,7 +31,6 @@ const ModalImage = ({selectedImage, setSelectedImage}) => {
         elem.msRequestFullscreen();
         }
     }
-      
     function closeFullscreen(elem) {
     if (document.exitFullscreen) {
     document.exitFullscreen();
@@ -43,9 +43,12 @@ const ModalImage = ({selectedImage, setSelectedImage}) => {
     }
     }
     return (
-        <div className="backdrop" onClick={zoomout}>
+        <motion.div className="backdrop" onClick={zoomout}
+            initial={{opacity:0}}
+            animate={{opacity: 1}}
+        >
             <img src={selectedImage} alt="kshitij" onClick={toogleFullscreen}/>
-        </div>
+        </motion.div>
     )
 }
 

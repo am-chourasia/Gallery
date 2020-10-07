@@ -1,6 +1,7 @@
 import React, {Fragment, useState} from 'react';
 import useFirestore from './hooks/useFirestore'
 import ModalImage from './ModalImage';
+import {motion} from 'framer-motion';
 
 const ImageGrid = () => {
     const {docs} = useFirestore('images');
@@ -12,9 +13,14 @@ const ImageGrid = () => {
         <Fragment>
             <div className="image-grid">
                 {docs && docs.map(doc => (
-                    <div className="image-wrap" key={doc.id} onClick={ () => handleClick(doc.url) } >
-                        <img src={doc.url} alt="Graphics"/>
-                    </div>
+                    <motion.div className="image-wrap" key={doc.id} onClick={() => handleClick(doc.url)}
+                        layout
+                        whileHover={{opacity: 1}} >
+                        <motion.img src={doc.url} alt="Graphics"
+                            initial={{opacity: 0.4}}
+                            animate={{opacity: 1}}
+                        />
+                    </motion.div>
                 ))}
             </div>
             {selectedImage && <ModalImage selectedImage={selectedImage} setSelectedImage={setSelectedImage} />}
