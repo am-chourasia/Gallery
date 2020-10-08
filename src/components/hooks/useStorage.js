@@ -1,6 +1,6 @@
 // import { storage } from 'firebase';
 import {useState, useEffect} from 'react';
-import {projectStorage, projectFirestore, timestamp} from '../firebase/config';
+import {Storage, Firestore, timestamp} from '../firebase/config';
 
 const useStorage = (file) => {
     const [progress, setProgress] = useState(0);
@@ -8,9 +8,9 @@ const useStorage = (file) => {
     const [url, setUrl] = useState(null);
     
     useEffect(() => {
-        //where the file is saved
-        const storageRef = projectStorage.ref(file.name);
-        const collectionRef = projectFirestore.collection('images');
+        //whereabouts of the file that is saved
+        const storageRef = Storage.ref(file.name);              //file will be identified with the file name in the database
+        const collectionRef = Firestore.collection('images');   //will be stored in the collection 'images'
 
         storageRef.put(file).on(
             'state_changed',
@@ -23,7 +23,10 @@ const useStorage = (file) => {
             },
             async () => {
                 const url = await storageRef.getDownloadURL();
-                collectionRef.add({ url, createdAt: timestamp() })  // Like the schema of the mongo
+                collectionRef.add({ 
+                    url, 
+                    createdAt: timestamp() 
+                })  // Like the schema of the mongo
                 setUrl(url);
             }
         )

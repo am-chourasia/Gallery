@@ -1,7 +1,7 @@
 import React, {Fragment, useState} from 'react';
-import useFirestore from './hooks/useFirestore'
+import useFirestore from '../hooks/useFirestore';
 import ModalImage from './ModalImage';
-import {motion} from 'framer-motion';
+import {addScaleCorrection, motion} from 'framer-motion';
 
 const ImageGrid = () => {
     const {docs} = useFirestore('images');
@@ -15,11 +15,18 @@ const ImageGrid = () => {
                 {docs && docs.map(doc => (
                     <motion.div className="image-wrap" key={doc.id} onClick={() => handleClick(doc.url)}
                         layout
-                        whileHover={{opacity: 1}} >
+                        whileHover={{opacity: 1}} 
+                    >
                         <motion.img src={doc.url} alt="Graphics"
                             initial={{opacity: 0.4}}
                             animate={{opacity: 1}}
+                            className='image'
                         />
+                        <motion.div className="trash"
+                            whileHover={{scale :1.2}}    
+                        >
+                            <img src="https://img.icons8.com/android/24/ffffff/trash.png" id='trash'/>
+                        </motion.div>
                     </motion.div>
                 ))}
             </div>

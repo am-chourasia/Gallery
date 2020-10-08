@@ -7,6 +7,7 @@
 * {
   margin: 0;
   padding: 0;
+  scroll-behavior: smooth;
 }
 
 /* base styles */
@@ -14,12 +15,6 @@ body {
   color: var(--secondary);
 }
 
-.admin {
-  max-width: 960px;
-  margin: 0 auto;
-}
-
-/* Title styles */
 .header {
   width: 100% !important;
   background: #000000;
@@ -59,14 +54,22 @@ body {
   margin: 10px 5px;
 }
 
-/* upload form styles */
-form {
+.admin {
+  max-width: 960px;
+  margin: 0 auto;
+  /* upload form styles */
+  /* progress bar styles */
+  /* image grid styles */
+  /* modal styles */
+}
+
+.admin form {
   margin: 30px auto 0px;
   text-align: center;
   border: 1px solid black;
 }
 
-form label {
+.admin form label {
   display: block;
   height: 30px;
   width: 30px;
@@ -79,18 +82,18 @@ form label {
   font-size: 24px;
 }
 
-form label input {
+.admin form label input {
   height: 0;
   width: 0;
   opacity: 0;
 }
 
-form label:hover {
+.admin form label:hover {
   background: black;
   color: white;
 }
 
-.output {
+.admin .output {
   text-align: center;
   border: 1px solid black;
   padding: 10px;
@@ -98,15 +101,13 @@ form label:hover {
   font-size: 0.8rem;
 }
 
-/* progress bar styles */
-.progress-bar {
+.admin .progress-bar {
   height: 5px;
   background: gray;
   margin-top: 20px;
 }
 
-/* image grid styles */
-.image-grid {
+.admin .image-grid {
   margin: 20px auto;
   display: -ms-grid;
   display: grid;
@@ -115,7 +116,7 @@ form label:hover {
   grid-gap: 3%;
 }
 
-.image-grid .image-wrap {
+.admin .image-grid .image-wrap {
   overflow: hidden;
   height: 0;
   padding: 50% 0;
@@ -124,12 +125,12 @@ form label:hover {
   opacity: 0.8;
 }
 
-.image-grid .image-wrap:hover {
+.admin .image-grid .image-wrap:hover {
   cursor: -webkit-zoom-in;
   cursor: zoom-in;
 }
 
-.image-grid .image-wrap img {
+.admin .image-grid .image-wrap .image {
   min-width: 100%;
   min-height: 100%;
   max-width: 150%;
@@ -138,8 +139,25 @@ form label:hover {
   left: -25%;
 }
 
-/* modal styles */
-.backdrop {
+.admin .image-grid .image-wrap .trash {
+  background-color: red;
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  color: white;
+  padding: 3px;
+  opacity: 0.5;
+}
+
+.admin .image-grid .image-wrap .trash:hover {
+  opacity: 1;
+  -webkit-transform-origin: bottom right;
+          transform-origin: bottom right;
+  cursor: pointer;
+}
+
+.admin .backdrop {
   position: fixed;
   top: 0;
   left: 0;
@@ -150,12 +168,12 @@ form label:hover {
           backdrop-filter: blur(3px);
 }
 
-.backdrop:hover {
+.admin .backdrop:hover {
   cursor: -webkit-zoom-out;
   cursor: zoom-out;
 }
 
-.backdrop img {
+.admin .backdrop img {
   display: block;
   max-width: 60%;
   max-height: 80%;
@@ -165,8 +183,25 @@ form label:hover {
   border: 1px solid white;
 }
 
-.backdrop img:hover {
+.admin .backdrop img:hover {
   cursor: -webkit-zoom-in;
   cursor: zoom-in;
+}
+
+.main {
+  background-color: #000000;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: auto;
+  -ms-scroll-snap-type: y mandatory;
+      scroll-snap-type: y mandatory;
+}
+
+.main .main-images {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  scroll-snap-align: start;
 }
 /*# sourceMappingURL=index.css.map */
