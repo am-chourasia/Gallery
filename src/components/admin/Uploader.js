@@ -3,7 +3,6 @@ import ProgressBar from "./ProgressBar";
 
 const Uploader = () => {
     const [file, setFile] = useState(null);
-    const [filePreview, setFilePreview] = useState(null);
     const [error, setError] = useState(null);
     const fileType = ['image/png', 'image/jpeg', 'image/jpg'];
     const handleChange = (e) => {
@@ -11,7 +10,6 @@ const Uploader = () => {
         if(fileSelected && fileType.includes(fileSelected.type)){       // if the file is not null
             setError('');
             setFile(fileSelected);
-            setFilePreview(URL.createObjectURL(e.target.files[0]));
         } else {
             setError("Please upload a valid image with png/jpg/jpeg extension");
             setFile(null);

@@ -1,19 +1,25 @@
 import React, {Fragment, useState} from 'react';
 import useFirestore from '../hooks/useFirestore';
 import ModalImage from './ModalImage';
-import {addScaleCorrection, motion} from 'framer-motion';
+import {motion} from 'framer-motion';
+import {Storage, Firestore} from '../firebase/config';
 
 const ImageGrid = () => {
     const {docs} = useFirestore('images');
     const [selectedImage, setSelectedImage] = useState(null);
-    const handleClick = (url) =>{
-        setSelectedImage(url);
+    const handleClick = (e, url) =>{
+        if(e.target.classList.contains('image'))          //to check for the click on the image and not on the trash can
+            setSelectedImage(url);
+    }
+    const deleteDB = (doc) => {
+        Firestore.collection('images').doc(doc.id).delete();    //deleting from the database
+        Storage.ref().child(`${doc.name}`).delete();            //deleting from the storage
     }
     return(
         <Fragment>
             <div className="image-grid">
                 {docs && docs.map(doc => (
-                    <motion.div className="image-wrap" key={doc.id} onClick={() => handleClick(doc.url)}
+                    <motion.div className="image-wrap" key={doc.id} onClick={(event) => handleClick(event, doc.url)}
                         layout
                         whileHover={{opacity: 1}} 
                     >
@@ -24,8 +30,9 @@ const ImageGrid = () => {
                         />
                         <motion.div className="trash"
                             whileHover={{scale :1.2}}    
+                            onClick={()=> deleteDB(doc)}
                         >
-                            <img src="https://img.icons8.com/android/24/ffffff/trash.png" id='trash'/>
+                            <img src="https://img.icons8.com/android/24/ffffff/trash.png" alt='delete' id='trash'/>
                         </motion.div>
                     </motion.div>
                 ))}

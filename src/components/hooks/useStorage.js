@@ -24,6 +24,7 @@ const useStorage = (file) => {
             async () => {
                 const url = await storageRef.getDownloadURL();
                 collectionRef.add({ 
+                    name: file.name,
                     url, 
                     createdAt: timestamp() 
                 })  // Like the schema of the mongo
